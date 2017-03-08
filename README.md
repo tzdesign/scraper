@@ -22,9 +22,9 @@ scraper.start(($,url) => {
 const Scraper = require('scraper');
 const scraper = new Scraper('http://www.my-awesome-website.com');
 
-scraper.maxRequests = 50
+scraper.maxRequests = 50;
 scraper.requestCount = 0;
 scraper.followImages = false;
-scraper.debug = false
+scraper.debug = false;
 
 ```
