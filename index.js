@@ -5,12 +5,12 @@ const cheerio = require('cheerio');
 class Scraper{
 
     constructor(url){
-        this.maxRequests = 50
-        this.requestCount = 0;
+        this._requestCount = 0;
+        this._fetchedUrls = [];
+        this.maxRequests = 50;
         this.followImages = false;
-        this.fetchedUrls = [];
-        this.url = url
-        this.debug = false
+        this.url = url;
+        this.debug = false;
     }
 
     start(callback){
@@ -20,7 +20,7 @@ class Scraper{
     call(url,callback){
         url = url.replace(/\#.*/gi,'');
 
-        if(!(this.fetchedUrls.indexOf(url) != -1) && (this.maxRequests === false || this.requestCount <= this.maxRequests)){
+        if(!(this._fetchedUrls.indexOf(url) != -1) && (this.maxRequests === false || this._requestCount <= this.maxRequests)){
 
             this.fetchedUrls.push(url);
             const self = this;
