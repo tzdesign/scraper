@@ -61,7 +61,7 @@ class Scraper{
         }
 
         if(!isAbsolute){
-            href = this.url + (href.substring(0,1) !== '/'?'/':'') + href;
+            href = this.url + (href.substring(0,1) && this.url.substring(this.url.length,1) !== '/'?'/':'') + href;
         }
         return href;
     }
