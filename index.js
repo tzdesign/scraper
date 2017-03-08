@@ -21,8 +21,9 @@ class Scraper{
         url = url.replace(/\#.*/gi,'');
 
         if(!(this._fetchedUrls.indexOf(url) != -1) && (this.maxRequests === false || this._requestCount <= this.maxRequests)){
-
+            this._requestCount++;
             this._fetchedUrls.push(url);
+            
             const self = this;
             request(url, function(err, resp, body) {
                 if(self.debug){
