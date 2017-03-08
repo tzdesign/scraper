@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 class Scraper{
 
     constructor(url){
-        this._requestCount = 0;
+        this._requestCount = 1;
         this._fetchedUrls = [];
         this.maxRequests = 50;
         this.followImages = false;
@@ -23,7 +23,7 @@ class Scraper{
         if(!(this._fetchedUrls.indexOf(url) != -1) && (this.maxRequests === false || this._requestCount <= this.maxRequests)){
             this._requestCount++;
             this._fetchedUrls.push(url);
-            
+
             const self = this;
             request(url, function(err, resp, body) {
                 if(self.debug){
